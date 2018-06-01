@@ -18,7 +18,7 @@ namespace ProjetoAgenda
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer<Contexto>(new DropCreateDatabaseIfModelChanges<Contexto>());
+            //Database.SetInitializer<Contexto>(new DropCreateDatabaseAlways<Contexto>());
         }
     }
 }
