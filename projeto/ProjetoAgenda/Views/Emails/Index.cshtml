@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjetoAgenda.Models.Emails>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { id = Model.Count() == 0 ? 0 : (Model.FirstOrDefault().IdContato), ed = "edit" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdContato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Classificacoes.NomeClassificacao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdContato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classificacoes.NomeClassificacao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdEmail }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.IdEmail }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdEmail })
+        </td>
+    </tr>
+}
+
+</table>

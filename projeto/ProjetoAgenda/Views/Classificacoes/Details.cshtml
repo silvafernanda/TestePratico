@@ -1,0 +1,26 @@
+﻿@model ProjetoAgenda.Models.Classificacoes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Classificacoes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeClassificacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeClassificacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdClassificacao }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

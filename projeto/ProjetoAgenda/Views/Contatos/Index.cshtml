@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ProjetoAgenda.Models.Contatos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listagem Contatos</h2>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="Listar Todos" class="form-control-teste" />
+            <button type="submit" class="btn btn-default">Pesquisar</button>
+        </div>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdTelefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdEndereco)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DropDownListFor(modelItem => item.Telefones, new SelectList(item.Telefones, "IdTelefone", "NumeroTelefone"), htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empresa)
+            </td>
+            <td>
+                @Html.DropDownListFor(modelItem => item.Emails, new SelectList(item.Emails, "IdEmail", "Email"), htmlAttributes: new { @class = "form-control" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enderecos.Logradouro)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdContato }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdContato }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdContato })
+            </td>
+        </tr>
+    }
+
+</table>
+<h3>
+    @Html.ActionLink("Criar Novo", "Create")
+</h3>

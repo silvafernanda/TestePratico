@@ -1,0 +1,66 @@
+﻿@model ProjetoAgenda.Models.Contatos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contatos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefones)
+        </dt>
+
+        <dd>
+            @foreach (var itemTelefone in Model.Telefones)
+            {
+                @Html.DisplayFor(modelItem => itemTelefone.NumeroTelefone)
+                <br />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enderecos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Enderecos.Logradouro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Emails)
+        </dt>
+
+        <dd>
+            @foreach (var itemEmail in Model.Emails)
+            {
+                @Html.DisplayFor(modelItem => itemEmail.Email)
+                <br />
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdContato }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
